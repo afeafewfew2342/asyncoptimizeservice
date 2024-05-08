@@ -1,6 +1,3 @@
-function add(x, y) {
-  return x + y;
-}
-
-const result = add(5, 3);
-console.log(result); // 8
+const message = "Hello world!";
+const messageLength = message.length;
+console.log(messageLength); // 13
