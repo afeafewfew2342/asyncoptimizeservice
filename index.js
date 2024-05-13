@@ -1,15 +1,22 @@
-function longestValidParentheses(s) {
-  if (s.length === 0) return 0;
-  let max = 0;
-  const dp = new Array(s.length).fill(0);
-  for (let i = 1; i < s.length; i++) {
-    if (s[i] === ")") {
-      if (s[i - 1] === "(") dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
-      else if (i - dp[i - 1] > 0 && s[i - dp[i - 1] - 1] === "(")
-        dp[i] =
-          dp[i - 1] + (i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
-      max = Math.max(max, dp[i]);
-    }
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there are elements remaining
+  while (currentIndex !== 0) {
+    // Pick a remaining element
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // Swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
-  return max;
+
+  return array;
 }
+
+const shuffledDeck = shuffle([1, 2, 3, 4, 5]);
+console.log(shuffledDeck);
